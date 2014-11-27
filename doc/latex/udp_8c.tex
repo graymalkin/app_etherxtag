@@ -1,0 +1,149 @@
+\hypertarget{udp_8c}{\section{Ether\-X\-Tag/src/udp.c File Reference}
+\label{udp_8c}\index{Ether\-X\-Tag/src/udp.\-c@{Ether\-X\-Tag/src/udp.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$print.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}xtcp\-\_\-client.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}udp.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mdns.\-h\char`\"{}}\\*
+Include dependency graph for udp.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{udp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{udp_8c_a7180786c98af534f76855fef6f1b97ab}{D\-E\-B\-U\-G\-G\-I\-N\-G}
+\item 
+\#define \hyperlink{udp_8c_a32adf79142f0a426b5e782fb7cd4cad3}{D\-B\-G}(x)~x
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t} \hyperlink{udp_8c_a344b7c4939b85d53795c58f07d8d9fe0}{connection\-\_\-type\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{udp_8c_ad289e78e3f586bb23a638af432bb734e}{mdns\-\_\-init} (chanend c\-\_\-xtcp)
+\item 
+void \hyperlink{udp_8c_a3e9cf2f5d9f21d897d17a36b76695ff2}{accept\-\_\-connection\-\_\-udp} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\item 
+void \hyperlink{udp_8c_a07d21a9c74237ef7521a55545adc4093}{free\-\_\-connection\-\_\-udp} (xtcp\-\_\-connection\-\_\-t conn)
+\item 
+void \hyperlink{udp_8c_a350d7a8bdb9cafaea8966ce878374fbf}{udp\-\_\-recv\-\_\-data} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\item 
+void \hyperlink{udp_8c_a67727f2eb992e609e1c2782261af78b1}{udp\-\_\-event} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t} \hyperlink{udp_8c_a5f4e7e9355081f3b85af06e4ed426635}{udp\-\_\-connections} \mbox{[}\hyperlink{udp_8h_a72d1def3b8b33feb906fc320c8c1a653}{M\-A\-X\-\_\-\-U\-D\-P\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{udp_8c_a32adf79142f0a426b5e782fb7cd4cad3}{\index{udp.\-c@{udp.\-c}!D\-B\-G@{D\-B\-G}}
+\index{D\-B\-G@{D\-B\-G}!udp.c@{udp.\-c}}
+\subsubsection[{D\-B\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-B\-G(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~x}}\label{udp_8c_a32adf79142f0a426b5e782fb7cd4cad3}
+
+
+Definition at line 12 of file udp.\-c.
+
+\hypertarget{udp_8c_a7180786c98af534f76855fef6f1b97ab}{\index{udp.\-c@{udp.\-c}!D\-E\-B\-U\-G\-G\-I\-N\-G@{D\-E\-B\-U\-G\-G\-I\-N\-G}}
+\index{D\-E\-B\-U\-G\-G\-I\-N\-G@{D\-E\-B\-U\-G\-G\-I\-N\-G}!udp.c@{udp.\-c}}
+\subsubsection[{D\-E\-B\-U\-G\-G\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-B\-U\-G\-G\-I\-N\-G}}\label{udp_8c_a7180786c98af534f76855fef6f1b97ab}
+
+
+Definition at line 9 of file udp.\-c.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{udp_8c_a344b7c4939b85d53795c58f07d8d9fe0}{\index{udp.\-c@{udp.\-c}!connection\-\_\-type\-\_\-t@{connection\-\_\-type\-\_\-t}}
+\index{connection\-\_\-type\-\_\-t@{connection\-\_\-type\-\_\-t}!udp.c@{udp.\-c}}
+\subsubsection[{connection\-\_\-type\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf connection\-\_\-type\-\_\-t}  {\bf connection\-\_\-type\-\_\-t}}}\label{udp_8c_a344b7c4939b85d53795c58f07d8d9fe0}
+
+
+\subsection{Function Documentation}
+\hypertarget{udp_8c_a3e9cf2f5d9f21d897d17a36b76695ff2}{\index{udp.\-c@{udp.\-c}!accept\-\_\-connection\-\_\-udp@{accept\-\_\-connection\-\_\-udp}}
+\index{accept\-\_\-connection\-\_\-udp@{accept\-\_\-connection\-\_\-udp}!udp.c@{udp.\-c}}
+\subsubsection[{accept\-\_\-connection\-\_\-udp}]{\setlength{\rightskip}{0pt plus 5cm}void accept\-\_\-connection\-\_\-udp (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{udp_8c_a3e9cf2f5d9f21d897d17a36b76695ff2}
+
+
+Definition at line 34 of file udp.\-c.
+
+\hypertarget{udp_8c_a07d21a9c74237ef7521a55545adc4093}{\index{udp.\-c@{udp.\-c}!free\-\_\-connection\-\_\-udp@{free\-\_\-connection\-\_\-udp}}
+\index{free\-\_\-connection\-\_\-udp@{free\-\_\-connection\-\_\-udp}!udp.c@{udp.\-c}}
+\subsubsection[{free\-\_\-connection\-\_\-udp}]{\setlength{\rightskip}{0pt plus 5cm}void free\-\_\-connection\-\_\-udp (
+\begin{DoxyParamCaption}
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{udp_8c_a07d21a9c74237ef7521a55545adc4093}
+
+
+Definition at line 48 of file udp.\-c.
+
+\hypertarget{udp_8c_ad289e78e3f586bb23a638af432bb734e}{\index{udp.\-c@{udp.\-c}!mdns\-\_\-init@{mdns\-\_\-init}}
+\index{mdns\-\_\-init@{mdns\-\_\-init}!udp.c@{udp.\-c}}
+\subsubsection[{mdns\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void mdns\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp}
+\end{DoxyParamCaption}
+)}}\label{udp_8c_ad289e78e3f586bb23a638af432bb734e}
+
+
+Definition at line 29 of file udp.\-c.
+
+\hypertarget{udp_8c_a67727f2eb992e609e1c2782261af78b1}{\index{udp.\-c@{udp.\-c}!udp\-\_\-event@{udp\-\_\-event}}
+\index{udp\-\_\-event@{udp\-\_\-event}!udp.c@{udp.\-c}}
+\subsubsection[{udp\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}void udp\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{udp_8c_a67727f2eb992e609e1c2782261af78b1}
+
+
+Definition at line 88 of file udp.\-c.
+
+\hypertarget{udp_8c_a350d7a8bdb9cafaea8966ce878374fbf}{\index{udp.\-c@{udp.\-c}!udp\-\_\-recv\-\_\-data@{udp\-\_\-recv\-\_\-data}}
+\index{udp\-\_\-recv\-\_\-data@{udp\-\_\-recv\-\_\-data}!udp.c@{udp.\-c}}
+\subsubsection[{udp\-\_\-recv\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void udp\-\_\-recv\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{udp_8c_a350d7a8bdb9cafaea8966ce878374fbf}
+
+
+Definition at line 56 of file udp.\-c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{udp_8c_a5f4e7e9355081f3b85af06e4ed426635}{\index{udp.\-c@{udp.\-c}!udp\-\_\-connections@{udp\-\_\-connections}}
+\index{udp\-\_\-connections@{udp\-\_\-connections}!udp.c@{udp.\-c}}
+\subsubsection[{udp\-\_\-connections}]{\setlength{\rightskip}{0pt plus 5cm}{\bf connection\-\_\-type\-\_\-t} udp\-\_\-connections\mbox{[}{\bf M\-A\-X\-\_\-\-U\-D\-P\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}\mbox{]}}}\label{udp_8c_a5f4e7e9355081f3b85af06e4ed426635}
+
+
+Definition at line 27 of file udp.\-c.
+

@@ -1,0 +1,263 @@
+\hypertarget{mdns_8h}{\section{Ether\-X\-Tag/src/mdns.h File Reference}
+\label{mdns_8h}\index{Ether\-X\-Tag/src/mdns.\-h@{Ether\-X\-Tag/src/mdns.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+Include dependency graph for mdns.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{mdns_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{mdns_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdns__flags__t}{dns\-\_\-flags\-\_\-t}
+\item 
+struct \hyperlink{structdns__packet__header__t}{dns\-\_\-packet\-\_\-header\-\_\-t}
+\begin{DoxyCompactList}\small\item\em D\-N\-S Packet header. \end{DoxyCompactList}\item 
+struct \hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t}
+\begin{DoxyCompactList}\small\item\em D\-N\-S Packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mdns_8h_a4b8c161f7a3f996f5f092bf869448c8a}{S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R}~12
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structdns__flags__t}{dns\-\_\-flags\-\_\-t} \hyperlink{mdns_8h_a1461793344892bd3a6bfc0946d7d81aa}{dns\-\_\-flags\-\_\-t}
+\item 
+typedef struct \hyperlink{structdns__packet__header__t}{dns\-\_\-packet\-\_\-header\-\_\-t} \hyperlink{mdns_8h_a1d8d1a66bfe0cc2f47340bcf00f3584c}{dns\-\_\-packet\-\_\-header\-\_\-t}
+\begin{DoxyCompactList}\small\item\em D\-N\-S Packet header. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} \hyperlink{mdns_8h_afa145699b23a8a07d5ffda178e09622b}{dns\-\_\-packet\-\_\-t}
+\begin{DoxyCompactList}\small\item\em D\-N\-S Packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2}{D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E} \{ \\*
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ab46046c86c89a9df5a4ac6bf82bba011}{D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R} =  0, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a17caf088a135ba3c185987510a5bc458}{D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R} =  1, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a556287473e158a5ebc5ae6af3eb6538a}{D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L} =  2, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a28bd8dcc0f084c630d5427ed7e612469}{D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R} =  3, 
+\\*
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a63972833cdcd983952b950df05edfdee}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D} =  4, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a1f60b454354158945846c9202f6d4074}{D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D} =  5, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a80b660f8e6125b68cee1b5b8d4f826a6}{D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N} =  6, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a12785854e261e7d5b34aa07fec888d3d}{D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T} =  7, 
+\\*
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa9e9159cceb081eb1357332e3767504b}{D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T} =  8, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ad78c13d9ef851562cf7fc7faac755192}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E} =  9, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa6c8976d60d8a52711a8971cee718578}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E} =  10, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a791f90670074a7fd48d66d3b9e621023}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S} =  16, 
+\\*
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a64848d381348c73438676ddefb9724e2}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y} =  17, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a974c103170362252a16b62f4a463a256}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E} =  18, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ada35f3bf681d66623ab4e271f7ec2913}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E} =  19, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a096b3433f20cf97d3fec679b882a50ec}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E} =  20, 
+\\*
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a6a196e2ea197c389dc35299f8aec3156}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G} =  21, 
+\hyperlink{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a7119ee984846eb81347d20abfd869d45}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C} =  22
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{mdns_8h_a99583e0d313be789aa2017d9490aa024}{count\-\_\-packet\-\_\-length} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em returns the length of a packet \end{DoxyCompactList}\item 
+void \hyperlink{mdns_8h_af345abaecbfbfc2b7070d55e377dc08c}{correct\-\_\-endianness} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em Corrects the endianness of data in a D\-N\-S packet. \end{DoxyCompactList}\item 
+void \hyperlink{mdns_8h_afbd495d1272cd02c84e44c681dd08671}{correct\-\_\-header\-\_\-endianness} (\hyperlink{structdns__packet__header__t}{dns\-\_\-packet\-\_\-header\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em Corrects the endiannes of data in a D\-N\-S packet header. \end{DoxyCompactList}\item 
+void \hyperlink{mdns_8h_af566bde7a173589ff6c55e76e3c2ccc2}{encode\-\_\-packet} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt, char $\ast$buffer, int len)
+\begin{DoxyCompactList}\small\item\em Encode a packet into a buffer for transmission on a network. \end{DoxyCompactList}\item 
+\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} \hyperlink{mdns_8h_adb6c64d79a5c3c6877820d9b4f924140}{decode\-\_\-packet} (char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Decode a packet from a buffer. \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{mdns_8h_af792d74a36744bbc7307fd9a7dedd234}{ntohs} (uint16\-\_\-t val)
+\begin{DoxyCompactList}\small\item\em Swap the endianness of a short value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{mdns_8h_a4b8c161f7a3f996f5f092bf869448c8a}{\index{mdns.\-h@{mdns.\-h}!S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R@{S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R}}
+\index{S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R@{S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R}!mdns.h@{mdns.\-h}}
+\subsubsection[{S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-I\-Z\-E\-\_\-\-O\-F\-\_\-\-D\-N\-S\-\_\-\-H\-E\-A\-D\-E\-R~12}}\label{mdns_8h_a4b8c161f7a3f996f5f092bf869448c8a}
+
+
+Definition at line 6 of file mdns.\-h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{mdns_8h_a1461793344892bd3a6bfc0946d7d81aa}{\index{mdns.\-h@{mdns.\-h}!dns\-\_\-flags\-\_\-t@{dns\-\_\-flags\-\_\-t}}
+\index{dns\-\_\-flags\-\_\-t@{dns\-\_\-flags\-\_\-t}!mdns.h@{mdns.\-h}}
+\subsubsection[{dns\-\_\-flags\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dns\-\_\-flags\-\_\-t}  {\bf dns\-\_\-flags\-\_\-t}}}\label{mdns_8h_a1461793344892bd3a6bfc0946d7d81aa}
+\hypertarget{mdns_8h_a1d8d1a66bfe0cc2f47340bcf00f3584c}{\index{mdns.\-h@{mdns.\-h}!dns\-\_\-packet\-\_\-header\-\_\-t@{dns\-\_\-packet\-\_\-header\-\_\-t}}
+\index{dns\-\_\-packet\-\_\-header\-\_\-t@{dns\-\_\-packet\-\_\-header\-\_\-t}!mdns.h@{mdns.\-h}}
+\subsubsection[{dns\-\_\-packet\-\_\-header\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dns\-\_\-packet\-\_\-header\-\_\-t}  {\bf dns\-\_\-packet\-\_\-header\-\_\-t}}}\label{mdns_8h_a1d8d1a66bfe0cc2f47340bcf00f3584c}
+
+
+D\-N\-S Packet header. 
+
+The header of a D\-N\-S packet. \hypertarget{mdns_8h_afa145699b23a8a07d5ffda178e09622b}{\index{mdns.\-h@{mdns.\-h}!dns\-\_\-packet\-\_\-t@{dns\-\_\-packet\-\_\-t}}
+\index{dns\-\_\-packet\-\_\-t@{dns\-\_\-packet\-\_\-t}!mdns.h@{mdns.\-h}}
+\subsubsection[{dns\-\_\-packet\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dns\-\_\-packet\-\_\-t}  {\bf dns\-\_\-packet\-\_\-t}}}\label{mdns_8h_afa145699b23a8a07d5ffda178e09622b}
+
+
+D\-N\-S Packet. 
+
+D\-N\-S Packet header and payload 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2}{\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E@{D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E}}
+\index{D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E@{D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E}!mdns.h@{mdns.\-h}}
+\subsubsection[{D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf D\-N\-S\-\_\-\-R\-E\-T\-U\-R\-N\-\_\-\-C\-O\-D\-E}}}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ab46046c86c89a9df5a4ac6bf82bba011}{D\-N\-S\-\_\-\-N\-O\-\_\-\-E\-R\-R\-O\-R}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ab46046c86c89a9df5a4ac6bf82bba011}
+}]\index{D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a17caf088a135ba3c185987510a5bc458}{D\-N\-S\-\_\-\-F\-O\-R\-M\-A\-T\-\_\-\-E\-R\-R\-O\-R}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a17caf088a135ba3c185987510a5bc458}
+}]\index{D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L@{D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L@{D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a556287473e158a5ebc5ae6af3eb6538a}{D\-N\-S\-\_\-\-S\-E\-R\-V\-E\-R\-\_\-\-F\-A\-I\-L}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a556287473e158a5ebc5ae6af3eb6538a}
+}]\index{D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R@{D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a28bd8dcc0f084c630d5427ed7e612469}{D\-N\-S\-\_\-\-N\-A\-M\-E\-\_\-\-E\-R\-R\-O\-R}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a28bd8dcc0f084c630d5427ed7e612469}
+}]\index{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a63972833cdcd983952b950df05edfdee}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-I\-M\-P\-L\-E\-M\-E\-N\-T\-E\-D}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a63972833cdcd983952b950df05edfdee}
+}]\index{D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D@{D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D@{D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a1f60b454354158945846c9202f6d4074}{D\-N\-S\-\_\-\-R\-E\-F\-U\-S\-E\-D}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a1f60b454354158945846c9202f6d4074}
+}]\index{D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N@{D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N@{D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a80b660f8e6125b68cee1b5b8d4f826a6}{D\-N\-S\-\_\-\-Y\-X\-\_\-\-D\-O\-M\-A\-I\-N}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a80b660f8e6125b68cee1b5b8d4f826a6}
+}]\index{D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T@{D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T@{D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a12785854e261e7d5b34aa07fec888d3d}{D\-N\-S\-\_\-\-Y\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a12785854e261e7d5b34aa07fec888d3d}
+}]\index{D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T@{D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T@{D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa9e9159cceb081eb1357332e3767504b}{D\-N\-S\-\_\-\-N\-X\-\_\-\-R\-R\-\_\-\-S\-E\-T}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa9e9159cceb081eb1357332e3767504b}
+}]\index{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ad78c13d9ef851562cf7fc7faac755192}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-A\-U\-T\-H\-O\-R\-I\-T\-A\-T\-I\-V\-E}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ad78c13d9ef851562cf7fc7faac755192}
+}]\index{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E@{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa6c8976d60d8a52711a8971cee718578}{D\-N\-S\-\_\-\-N\-O\-T\-\_\-\-Z\-O\-N\-E}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2aa6c8976d60d8a52711a8971cee718578}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a791f90670074a7fd48d66d3b9e621023}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-V\-E\-R\-S}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a791f90670074a7fd48d66d3b9e621023}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a64848d381348c73438676ddefb9724e2}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-K\-E\-Y}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a64848d381348c73438676ddefb9724e2}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a974c103170362252a16b62f4a463a256}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-I\-M\-E}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a974c103170362252a16b62f4a463a256}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ada35f3bf681d66623ab4e271f7ec2913}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-M\-O\-D\-E}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2ada35f3bf681d66623ab4e271f7ec2913}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a096b3433f20cf97d3fec679b882a50ec}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-N\-A\-M\-E}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a096b3433f20cf97d3fec679b882a50ec}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a6a196e2ea197c389dc35299f8aec3156}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-A\-L\-G}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a6a196e2ea197c389dc35299f8aec3156}
+}]\index{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C}!mdns.\-h@{mdns.\-h}}\index{mdns.\-h@{mdns.\-h}!D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C@{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C}}\item[{\em 
+\hypertarget{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a7119ee984846eb81347d20abfd869d45}{D\-N\-S\-\_\-\-B\-A\-D\-\_\-\-T\-R\-U\-N\-C}\label{mdns_8h_af9eceef222a0a264c35b898ae133e2a2a7119ee984846eb81347d20abfd869d45}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 8 of file mdns.\-h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{mdns_8h_af345abaecbfbfc2b7070d55e377dc08c}{\index{mdns.\-h@{mdns.\-h}!correct\-\_\-endianness@{correct\-\_\-endianness}}
+\index{correct\-\_\-endianness@{correct\-\_\-endianness}!mdns.h@{mdns.\-h}}
+\subsubsection[{correct\-\_\-endianness}]{\setlength{\rightskip}{0pt plus 5cm}void correct\-\_\-endianness (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_af345abaecbfbfc2b7070d55e377dc08c}
+
+
+Corrects the endianness of data in a D\-N\-S packet. 
+
+A\-R\-P\-A defines internet trafic to be big endian, but most machines now are little endian, so this function corrects that for relevant parts of a packet. 
+
+Definition at line 122 of file mdns.\-c.
+
+\hypertarget{mdns_8h_afbd495d1272cd02c84e44c681dd08671}{\index{mdns.\-h@{mdns.\-h}!correct\-\_\-header\-\_\-endianness@{correct\-\_\-header\-\_\-endianness}}
+\index{correct\-\_\-header\-\_\-endianness@{correct\-\_\-header\-\_\-endianness}!mdns.h@{mdns.\-h}}
+\subsubsection[{correct\-\_\-header\-\_\-endianness}]{\setlength{\rightskip}{0pt plus 5cm}void correct\-\_\-header\-\_\-endianness (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-header\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_afbd495d1272cd02c84e44c681dd08671}
+
+
+Corrects the endiannes of data in a D\-N\-S packet header. 
+
+A\-R\-P\-A defines internet trafic to be big endian, but most machines now are little endian, so this function corrects that for relevant parts of a packet. 
+
+Definition at line 113 of file mdns.\-c.
+
+\hypertarget{mdns_8h_a99583e0d313be789aa2017d9490aa024}{\index{mdns.\-h@{mdns.\-h}!count\-\_\-packet\-\_\-length@{count\-\_\-packet\-\_\-length}}
+\index{count\-\_\-packet\-\_\-length@{count\-\_\-packet\-\_\-length}!mdns.h@{mdns.\-h}}
+\subsubsection[{count\-\_\-packet\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int count\-\_\-packet\-\_\-length (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_a99583e0d313be789aa2017d9490aa024}
+
+
+returns the length of a packet 
+
+returns the total length of a packet, including it's header and payload. 
+
+Definition at line 94 of file mdns.\-c.
+
+\hypertarget{mdns_8h_adb6c64d79a5c3c6877820d9b4f924140}{\index{mdns.\-h@{mdns.\-h}!decode\-\_\-packet@{decode\-\_\-packet}}
+\index{decode\-\_\-packet@{decode\-\_\-packet}!mdns.h@{mdns.\-h}}
+\subsubsection[{decode\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dns\-\_\-packet\-\_\-t} decode\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_adb6c64d79a5c3c6877820d9b4f924140}
+
+
+Decode a packet from a buffer. 
+
+Read out a buffer, e.\-g. read from a network, and fill a \hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} object. 
+
+Definition at line 41 of file mdns.\-c.
+
+\hypertarget{mdns_8h_af566bde7a173589ff6c55e76e3c2ccc2}{\index{mdns.\-h@{mdns.\-h}!encode\-\_\-packet@{encode\-\_\-packet}}
+\index{encode\-\_\-packet@{encode\-\_\-packet}!mdns.h@{mdns.\-h}}
+\subsubsection[{encode\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}void encode\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt, }
+\item[{char $\ast$}]{buffer, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_af566bde7a173589ff6c55e76e3c2ccc2}
+
+
+Encode a packet into a buffer for transmission on a network. 
+
+Fills a given buffer with packet data for transmission on a network.
+
+A super simple implementation of M\-D\-N\-S for the X\-Core. 
+
+Definition at line 9 of file mdns.\-c.
+
+\hypertarget{mdns_8h_af792d74a36744bbc7307fd9a7dedd234}{\index{mdns.\-h@{mdns.\-h}!ntohs@{ntohs}}
+\index{ntohs@{ntohs}!mdns.h@{mdns.\-h}}
+\subsubsection[{ntohs}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t ntohs (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{val}
+\end{DoxyParamCaption}
+)}}\label{mdns_8h_af792d74a36744bbc7307fd9a7dedd234}
+
+
+Swap the endianness of a short value. 
+
+Swap the upper and lower octets of a 2 byte value. 
+
+Definition at line 108 of file mdns.\-c.
+

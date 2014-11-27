@@ -1,0 +1,229 @@
+\hypertarget{tcp_8c}{\section{Ether\-X\-Tag/src/tcp.c File Reference}
+\label{tcp_8c}\index{Ether\-X\-Tag/src/tcp.\-c@{Ether\-X\-Tag/src/tcp.\-c}}
+}
+{\ttfamily \#include $<$print.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}ethernet\-\_\-board\-\_\-conf.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ethernet\-\_\-board\-\_\-support.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}xtcp\-\_\-client.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tcp.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}web\-\_\-service.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dbg\-\_\-access.\-h\char`\"{}}\\*
+Include dependency graph for tcp.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tcp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{tcp_8c_a7180786c98af534f76855fef6f1b97ab}{D\-E\-B\-U\-G\-G\-I\-N\-G}
+\item 
+\#define \hyperlink{tcp_8c_a32adf79142f0a426b5e782fb7cd4cad3}{D\-B\-G}(x)~x
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t} \hyperlink{tcp_8c_a344b7c4939b85d53795c58f07d8d9fe0}{connection\-\_\-type\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tcp_8c_a8534a985d36d410a2fd724f725186257}{httpd\-\_\-init} (chanend c\-\_\-xtcp)
+\begin{DoxyCompactList}\small\item\em Initialize the H\-T\-T\-P state. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_a4c158af3570b43954d6200456d844c9f}{xtag\-\_\-init} (chanend c\-\_\-xtcp)
+\begin{DoxyCompactList}\small\item\em Initialise the X\-T\-A\-G state. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_a80ca5e099c81a2855b89518a77e3d093}{connection\-\_\-buffer\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Initialise the connection buffer. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_a3cc193cb4914713c69bb20e63e129ec8}{tcp\-\_\-event} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\begin{DoxyCompactList}\small\item\em Handles a T\-C\-P event. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_aa088fce0f750cc5df371a8ff11fb39cf}{free\-\_\-connection} (xtcp\-\_\-connection\-\_\-t conn)
+\begin{DoxyCompactList}\small\item\em Removes a connection from the connections buffer. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_a63af330ede3b3cdfedbff2049cf302b5}{accept\-\_\-connection} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\begin{DoxyCompactList}\small\item\em If there's room, adds an incoming connection to the connections buffer. \end{DoxyCompactList}\item 
+void \hyperlink{tcp_8c_a79c7330ca729a796165f8227decbbd3b}{recv\-\_\-data} (chanend c\-\_\-xtcp, xtcp\-\_\-connection\-\_\-t conn)
+\item 
+void \hyperlink{tcp_8c_adbb59ad44015a76db47030e6a05d7d9d}{httpd\-\_\-send} (chanend tcp\-\_\-svr, xtcp\-\_\-connection\-\_\-t conn)
+\item 
+void \hyperlink{tcp_8c_a1f97bdebd1b08139a242b6c0756023d1}{if\-\_\-up} (chanend c\-\_\-xtcp)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structconnection__type__t}{connection\-\_\-type\-\_\-t} \hyperlink{tcp_8c_a26456581a73c5cc4b3f48c17add77d5a}{tcp\-\_\-connections} \mbox{[}\hyperlink{tcp_8h_a8e0985f4d6f18b8835ec23373252ef1e}{M\-A\-X\-\_\-\-T\-C\-P\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{tcp_8c_a32adf79142f0a426b5e782fb7cd4cad3}{\index{tcp.\-c@{tcp.\-c}!D\-B\-G@{D\-B\-G}}
+\index{D\-B\-G@{D\-B\-G}!tcp.c@{tcp.\-c}}
+\subsubsection[{D\-B\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-B\-G(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~x}}\label{tcp_8c_a32adf79142f0a426b5e782fb7cd4cad3}
+
+
+Definition at line 11 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a7180786c98af534f76855fef6f1b97ab}{\index{tcp.\-c@{tcp.\-c}!D\-E\-B\-U\-G\-G\-I\-N\-G@{D\-E\-B\-U\-G\-G\-I\-N\-G}}
+\index{D\-E\-B\-U\-G\-G\-I\-N\-G@{D\-E\-B\-U\-G\-G\-I\-N\-G}!tcp.c@{tcp.\-c}}
+\subsubsection[{D\-E\-B\-U\-G\-G\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-B\-U\-G\-G\-I\-N\-G}}\label{tcp_8c_a7180786c98af534f76855fef6f1b97ab}
+
+
+Definition at line 8 of file tcp.\-c.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{tcp_8c_a344b7c4939b85d53795c58f07d8d9fe0}{\index{tcp.\-c@{tcp.\-c}!connection\-\_\-type\-\_\-t@{connection\-\_\-type\-\_\-t}}
+\index{connection\-\_\-type\-\_\-t@{connection\-\_\-type\-\_\-t}!tcp.c@{tcp.\-c}}
+\subsubsection[{connection\-\_\-type\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf connection\-\_\-type\-\_\-t}  {\bf connection\-\_\-type\-\_\-t}}}\label{tcp_8c_a344b7c4939b85d53795c58f07d8d9fe0}
+
+
+\subsection{Function Documentation}
+\hypertarget{tcp_8c_a63af330ede3b3cdfedbff2049cf302b5}{\index{tcp.\-c@{tcp.\-c}!accept\-\_\-connection@{accept\-\_\-connection}}
+\index{accept\-\_\-connection@{accept\-\_\-connection}!tcp.c@{tcp.\-c}}
+\subsubsection[{accept\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}void accept\-\_\-connection (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a63af330ede3b3cdfedbff2049cf302b5}
+
+
+If there's room, adds an incoming connection to the connections buffer. 
+
+This will set-\/up state in the 1st available slot in the connections buffer to represent this connection. 
+
+Definition at line 146 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a80ca5e099c81a2855b89518a77e3d093}{\index{tcp.\-c@{tcp.\-c}!connection\-\_\-buffer\-\_\-init@{connection\-\_\-buffer\-\_\-init}}
+\index{connection\-\_\-buffer\-\_\-init@{connection\-\_\-buffer\-\_\-init}!tcp.c@{tcp.\-c}}
+\subsubsection[{connection\-\_\-buffer\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void connection\-\_\-buffer\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a80ca5e099c81a2855b89518a77e3d093}
+
+
+Initialise the connection buffer. 
+
+Sets all the connections in the buffer to inactive, so they can be used by incoming connections as they are established. 
+
+Definition at line 39 of file tcp.\-c.
+
+\hypertarget{tcp_8c_aa088fce0f750cc5df371a8ff11fb39cf}{\index{tcp.\-c@{tcp.\-c}!free\-\_\-connection@{free\-\_\-connection}}
+\index{free\-\_\-connection@{free\-\_\-connection}!tcp.c@{tcp.\-c}}
+\subsubsection[{free\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}void free\-\_\-connection (
+\begin{DoxyParamCaption}
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_aa088fce0f750cc5df371a8ff11fb39cf}
+
+
+Removes a connection from the connections buffer. 
+
+This sets a given connection to inactive, so it may be claimed in {\ttfamily accept\-\_\-connection} 
+
+Definition at line 133 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a8534a985d36d410a2fd724f725186257}{\index{tcp.\-c@{tcp.\-c}!httpd\-\_\-init@{httpd\-\_\-init}}
+\index{httpd\-\_\-init@{httpd\-\_\-init}!tcp.c@{tcp.\-c}}
+\subsubsection[{httpd\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void httpd\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{chanend}]{tcp\-\_\-svr}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a8534a985d36d410a2fd724f725186257}
+
+
+Initialize the H\-T\-T\-P state. 
+
+Adds a tcp listener on the H\-T\-T\-P port (80) 
+
+Definition at line 27 of file tcp.\-c.
+
+\hypertarget{tcp_8c_adbb59ad44015a76db47030e6a05d7d9d}{\index{tcp.\-c@{tcp.\-c}!httpd\-\_\-send@{httpd\-\_\-send}}
+\index{httpd\-\_\-send@{httpd\-\_\-send}!tcp.c@{tcp.\-c}}
+\subsubsection[{httpd\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}void httpd\-\_\-send (
+\begin{DoxyParamCaption}
+\item[{chanend}]{tcp\-\_\-svr, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_adbb59ad44015a76db47030e6a05d7d9d}
+Sends a webpage back down the tcp connection
+
+Sends a webpage generated by web\-\_\-service back down the tcp connection. 
+
+Definition at line 199 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a1f97bdebd1b08139a242b6c0756023d1}{\index{tcp.\-c@{tcp.\-c}!if\-\_\-up@{if\-\_\-up}}
+\index{if\-\_\-up@{if\-\_\-up}!tcp.c@{tcp.\-c}}
+\subsubsection[{if\-\_\-up}]{\setlength{\rightskip}{0pt plus 5cm}void if\-\_\-up (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a1f97bdebd1b08139a242b6c0756023d1}
+
+
+Definition at line 234 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a79c7330ca729a796165f8227decbbd3b}{\index{tcp.\-c@{tcp.\-c}!recv\-\_\-data@{recv\-\_\-data}}
+\index{recv\-\_\-data@{recv\-\_\-data}!tcp.c@{tcp.\-c}}
+\subsubsection[{recv\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void recv\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a79c7330ca729a796165f8227decbbd3b}
+
+
+Definition at line 160 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a3cc193cb4914713c69bb20e63e129ec8}{\index{tcp.\-c@{tcp.\-c}!tcp\-\_\-event@{tcp\-\_\-event}}
+\index{tcp\-\_\-event@{tcp\-\_\-event}!tcp.c@{tcp.\-c}}
+\subsubsection[{tcp\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}void tcp\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{chanend}]{c\-\_\-xtcp, }
+\item[{xtcp\-\_\-connection\-\_\-t}]{conn}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a3cc193cb4914713c69bb20e63e129ec8}
+
+
+Handles a T\-C\-P event. 
+
+Switches through various T\-C\-P event scenarios, and handles them apropriately. 
+
+Definition at line 48 of file tcp.\-c.
+
+\hypertarget{tcp_8c_a4c158af3570b43954d6200456d844c9f}{\index{tcp.\-c@{tcp.\-c}!xtag\-\_\-init@{xtag\-\_\-init}}
+\index{xtag\-\_\-init@{xtag\-\_\-init}!tcp.c@{tcp.\-c}}
+\subsubsection[{xtag\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void xtag\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{chanend}]{tcp\-\_\-svr}
+\end{DoxyParamCaption}
+)}}\label{tcp_8c_a4c158af3570b43954d6200456d844c9f}
+
+
+Initialise the X\-T\-A\-G state. 
+
+Adds a tcp listener to the Ether\-X\-T\-A\-G port (1337) 
+
+Definition at line 33 of file tcp.\-c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{tcp_8c_a26456581a73c5cc4b3f48c17add77d5a}{\index{tcp.\-c@{tcp.\-c}!tcp\-\_\-connections@{tcp\-\_\-connections}}
+\index{tcp\-\_\-connections@{tcp\-\_\-connections}!tcp.c@{tcp.\-c}}
+\subsubsection[{tcp\-\_\-connections}]{\setlength{\rightskip}{0pt plus 5cm}{\bf connection\-\_\-type\-\_\-t} tcp\-\_\-connections\mbox{[}{\bf M\-A\-X\-\_\-\-T\-C\-P\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N\-S}\mbox{]}}}\label{tcp_8c_a26456581a73c5cc4b3f48c17add77d5a}
+
+
+Definition at line 25 of file tcp.\-c.
+

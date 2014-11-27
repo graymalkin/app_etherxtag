@@ -1,0 +1,123 @@
+\hypertarget{mdns_8c}{\section{Ether\-X\-Tag/src/mdns.c File Reference}
+\label{mdns_8c}\index{Ether\-X\-Tag/src/mdns.\-c@{Ether\-X\-Tag/src/mdns.\-c}}
+}
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}mdns.\-h\char`\"{}}\\*
+Include dependency graph for mdns.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{mdns_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mdns_8c_af566bde7a173589ff6c55e76e3c2ccc2}{encode\-\_\-packet} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt, char $\ast$buffer, int len)
+\begin{DoxyCompactList}\small\item\em Encode a packet into a buffer for transmission on a network. \end{DoxyCompactList}\item 
+\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} \hyperlink{mdns_8c_adb6c64d79a5c3c6877820d9b4f924140}{decode\-\_\-packet} (char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Decode a packet from a buffer. \end{DoxyCompactList}\item 
+int \hyperlink{mdns_8c_a99583e0d313be789aa2017d9490aa024}{count\-\_\-packet\-\_\-length} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em returns the length of a packet \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{mdns_8c_af792d74a36744bbc7307fd9a7dedd234}{ntohs} (uint16\-\_\-t val)
+\begin{DoxyCompactList}\small\item\em Swap the endianness of a short value. \end{DoxyCompactList}\item 
+void \hyperlink{mdns_8c_afbd495d1272cd02c84e44c681dd08671}{correct\-\_\-header\-\_\-endianness} (\hyperlink{structdns__packet__header__t}{dns\-\_\-packet\-\_\-header\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em Corrects the endiannes of data in a D\-N\-S packet header. \end{DoxyCompactList}\item 
+void \hyperlink{mdns_8c_af345abaecbfbfc2b7070d55e377dc08c}{correct\-\_\-endianness} (\hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em Corrects the endianness of data in a D\-N\-S packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{mdns_8c_af345abaecbfbfc2b7070d55e377dc08c}{\index{mdns.\-c@{mdns.\-c}!correct\-\_\-endianness@{correct\-\_\-endianness}}
+\index{correct\-\_\-endianness@{correct\-\_\-endianness}!mdns.c@{mdns.\-c}}
+\subsubsection[{correct\-\_\-endianness}]{\setlength{\rightskip}{0pt plus 5cm}void correct\-\_\-endianness (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_af345abaecbfbfc2b7070d55e377dc08c}
+
+
+Corrects the endianness of data in a D\-N\-S packet. 
+
+A\-R\-P\-A defines internet trafic to be big endian, but most machines now are little endian, so this function corrects that for relevant parts of a packet. 
+
+Definition at line 122 of file mdns.\-c.
+
+\hypertarget{mdns_8c_afbd495d1272cd02c84e44c681dd08671}{\index{mdns.\-c@{mdns.\-c}!correct\-\_\-header\-\_\-endianness@{correct\-\_\-header\-\_\-endianness}}
+\index{correct\-\_\-header\-\_\-endianness@{correct\-\_\-header\-\_\-endianness}!mdns.c@{mdns.\-c}}
+\subsubsection[{correct\-\_\-header\-\_\-endianness}]{\setlength{\rightskip}{0pt plus 5cm}void correct\-\_\-header\-\_\-endianness (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-header\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_afbd495d1272cd02c84e44c681dd08671}
+
+
+Corrects the endiannes of data in a D\-N\-S packet header. 
+
+A\-R\-P\-A defines internet trafic to be big endian, but most machines now are little endian, so this function corrects that for relevant parts of a packet. 
+
+Definition at line 113 of file mdns.\-c.
+
+\hypertarget{mdns_8c_a99583e0d313be789aa2017d9490aa024}{\index{mdns.\-c@{mdns.\-c}!count\-\_\-packet\-\_\-length@{count\-\_\-packet\-\_\-length}}
+\index{count\-\_\-packet\-\_\-length@{count\-\_\-packet\-\_\-length}!mdns.c@{mdns.\-c}}
+\subsubsection[{count\-\_\-packet\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int count\-\_\-packet\-\_\-length (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_a99583e0d313be789aa2017d9490aa024}
+
+
+returns the length of a packet 
+
+returns the total length of a packet, including it's header and payload. 
+
+Definition at line 94 of file mdns.\-c.
+
+\hypertarget{mdns_8c_adb6c64d79a5c3c6877820d9b4f924140}{\index{mdns.\-c@{mdns.\-c}!decode\-\_\-packet@{decode\-\_\-packet}}
+\index{decode\-\_\-packet@{decode\-\_\-packet}!mdns.c@{mdns.\-c}}
+\subsubsection[{decode\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dns\-\_\-packet\-\_\-t} decode\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_adb6c64d79a5c3c6877820d9b4f924140}
+
+
+Decode a packet from a buffer. 
+
+Read out a buffer, e.\-g. read from a network, and fill a \hyperlink{structdns__packet__t}{dns\-\_\-packet\-\_\-t} object. 
+
+Definition at line 41 of file mdns.\-c.
+
+\hypertarget{mdns_8c_af566bde7a173589ff6c55e76e3c2ccc2}{\index{mdns.\-c@{mdns.\-c}!encode\-\_\-packet@{encode\-\_\-packet}}
+\index{encode\-\_\-packet@{encode\-\_\-packet}!mdns.c@{mdns.\-c}}
+\subsubsection[{encode\-\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}void encode\-\_\-packet (
+\begin{DoxyParamCaption}
+\item[{{\bf dns\-\_\-packet\-\_\-t} $\ast$}]{pkt, }
+\item[{char $\ast$}]{buffer, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_af566bde7a173589ff6c55e76e3c2ccc2}
+
+
+Encode a packet into a buffer for transmission on a network. 
+
+A super simple implementation of M\-D\-N\-S for the X\-Core. 
+
+Definition at line 9 of file mdns.\-c.
+
+\hypertarget{mdns_8c_af792d74a36744bbc7307fd9a7dedd234}{\index{mdns.\-c@{mdns.\-c}!ntohs@{ntohs}}
+\index{ntohs@{ntohs}!mdns.c@{mdns.\-c}}
+\subsubsection[{ntohs}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t ntohs (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{val}
+\end{DoxyParamCaption}
+)}}\label{mdns_8c_af792d74a36744bbc7307fd9a7dedd234}
+
+
+Swap the endianness of a short value. 
+
+Swap the upper and lower octets of a 2 byte value. 
+
+Definition at line 108 of file mdns.\-c.
+
