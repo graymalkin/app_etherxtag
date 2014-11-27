@@ -1,4 +1,0 @@
-<map id="dns_packet_t" name="dns_packet_t">
-<area shape="rect" id="node2" href="$structdns__packet__header__t.html" title="DNS Packet header." alt="" coords="5,110,152,143"/>
-<area shape="rect" id="node4" href="$structdns__flags__t.html" title="dns_flags_t" alt="" coords="35,6,123,39"/>
-</map>

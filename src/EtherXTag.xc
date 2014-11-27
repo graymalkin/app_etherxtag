@@ -4,81 +4,259 @@
  *  Created on: 22 Sep 2014
  *      Author: simonc
  */
-#define ETHERNET_USE_TRIANGLE_SLOT  // Picking a slice slot to use
-#define XTAG_USE_SOFT_MSEL_SRST     // Use soft reset
-
 #include <print.h>
 #include <stdio.h>
 #include <xscope.h>
 
-#include "ethernet_board_conf.h"    // Config for ports to use on the sliceKIT
-#include "ethernet_board_support.h"
+#include "EtherXTag.h"
+#include "jtag_interface.h"
 #include "mdns.h"
-#include "tcp.h"
-#include "xtcp.h"
+#include "uid.h"
+#include "uip_server.h"
+#include "xscope_interface.h"
+#include "xscope_server.h"
+#include "xscope_udp.h"
 
+// Parallel main
+int main(void) {
+    // Channels for communication to the xtcp server
+    chan i_xtcp[CLIENT_SERVICES];
 
-xtcp_ipconfig_t ipconfig = { { 0, 0, 0, 0 },  // ip address (eg 192, 168, 0,  2)
-        { 0, 0, 0, 0 },   // netmask    (eg 255, 255, 255,0)
-        { 0, 0, 0, 0 }    // gateway    (eg 192, 168, 0,  1)
-};
+    ethernet_cfg_if i_cfg[CLIENT_SERVICES];
+    ethernet_rx_if i_rx[CLIENT_SERVICES];
+    ethernet_tx_if i_tx[CLIENT_SERVICES];
 
-// These intializers are taken from the ethernet_board_support.h header for
-// XMOS dev boards. If you are using a different board you will need to
-// supply explicit port structure intializers for these values
+    chan c, udp_xscope, reset, ipc;
 
-ethernet_xtcp_ports_t xtcp_ports = {
-on ETHERNET_DEFAULT_TILE: OTP_PORTS_INITIALIZER, ETHERNET_DEFAULT_SMI_INIT,
-        ETHERNET_DEFAULT_MII_INIT_lite,
-        ETHERNET_DEFAULT_RESET_INTERFACE_INIT };
+    interface xscope_interface xsi;
+#if XTCP_SEPARATE_MAC
+#endif
+    par
+    {
+        // The main ethernet/tcp server
+#if XTCP_SEPARATE_MAC
+        on ETHERNET_DEFAULT_TILE: mii_ethernet_mac(i_cfg, CLIENT_SERVICES,
+                                                   i_rx,  CLIENT_SERVICES,
+                                                   i_tx,  CLIENT_SERVICES,
+                                                   p_eth_rxclk, p_eth_rxerr,
+                                                   p_eth_rxd, p_eth_rxdv,
+                                                   p_eth_txclk, p_eth_txen,
+                                                   p_eth_txd, p_eth_dummy,
+                                                   eth_rxclk, eth_txclk,
+                                                   ETH_RX_BUFFER_SIZE_WORDS);
+#endif
+        on ETHERNET_DEFAULT_TILE: handle_mdns_event(i_xtcp[MDNS_SERVICE]);
 
+        // The xLINK code must be on the correct tile, or the ports won't match
+        // the correct IO
+//        on XTAG_DEFAULT_TILE:     uart_usb_thread(c_ep_out[2], c_ep_in[3], udp_xscope);
+        on XTAG_DEFAULT_TILE:     uart_thread(udp_xscope, c, reset);
+        restOfWorld(c);
+/*
+        on XTAG_DEFAULT_TILE:     handle_all_events(i_xtcp[0], reset, ipc);
+/*/
+        on XTAG_DEFAULT_TILE:     handle_xtag_event(i_xtcp[XTAG_SERVICE], reset, ipc);
+        on XTAG_DEFAULT_TILE:     handle_http_event(i_xtcp[HTTP_SERVICE]);
+        on XTAG_DEFAULT_TILE:     xscope_udp(i_xtcp[XSCOPE_SERVICE], xsi, ipc);
+        on XTAG_DEFAULT_TILE:     xscope_server(xsi, udp_xscope);
+//*/
+    }
+    return 0;
+}
 
-on tile[1] : buffered out port:32 jtag_pin_TDI  = XS1_PORT_1A;
-on tile[1] : buffered in port:32 jtag_pin_TDO   = XS1_PORT_1H;
-on tile[1] : buffered out port:4 jtag_pin_TMS   = XS1_PORT_1D;
-on tile[1] : buffered out port:32 jtag_pin_TCK  = XS1_PORT_1E;
-on tile[1] : out port jtag_pin_SRST             = XS1_PORT_1I;
-on tile[1] : out port jtag_pin_TRST             = XS1_PORT_1B;
-on tile[1] : clock tck_clk                      = XS1_CLKBLK_1;
-on tile[1] : clock other_clk                    = XS1_CLKBLK_2;
-
-unsafe void handle_tcp_event(chanend c_xtcp) {
+// Handle TCP events
+void handle_all_events(chanend c_xtcp, chanend rst_a, chanend ip_out) {
     xtcp_connection_t conn;
-    httpd_init(c_xtcp);
     xtag_init(c_xtcp);
+    httpd_init(c_xtcp);
     mdns_init(c_xtcp);
     while (1) {
         select
         {
             case xtcp_event(c_xtcp, conn):
             {
-                // Handle MDNS events.
-                mdns_xtcp_handler(c_xtcp, conn);
+                // Handle EtherXTAG events
+                if(conn.local_port == ETHER_XTAG_PORT)
+                {
+                    printstr("Event for XTAG_SERVICE: ");
+                    print_event_nameln(conn.event);
+                    unsafe { xtag_tcp_event(c_xtcp, conn, rst_a, ip_out); }
+                    break;
+                }
 
-                // Handle HTTP and EtherXTAG events
-                tcp_event(c_xtcp, conn);
+                if(conn.local_port == HTTP_PORT)
+                {
+                    printstr("Event for HTTP_SERVICE: ");
+                    print_event_nameln(conn.event);
+                    unsafe { http_tcp_event(c_xtcp, conn); }
+                    break;
+                }
+
+                if(conn.event == XTCP_IFUP)
+                {
+                    // Register this device on the network using an mdns broadcast.
+                    mdns_register_name("etherxtag");
+                    mdns_register_canonical_name("etherxtag");
+                    mdns_register_service("etherxtag", "_xtag._tcp", ETHER_XTAG_PORT, "uuid=" DEVICE_ID);
+                }
+
+                mdns_xtcp_handler(c_xtcp, conn);
                 break;
             }
         }
     }
 }
 
-void xscope_user_init(void) {
-   xscope_register(0, 0, "", 0, "");
-   xscope_config_io(XSCOPE_IO_BASIC);
+// Handle xtag TCP events
+void handle_xtag_event(chanend c_xtcp, chanend rst_a, chanend ip_out) {
+    xtcp_connection_t conn;
+    xtag_init(c_xtcp);
+    while (1) {
+
+        select
+        {
+            case xtcp_event(c_xtcp, conn):
+            {
+                // Handle EtherXTAG events
+//                printstr("Event for XTAG_SERVICE: ");
+//                print_event_nameln(conn.event);
+                unsafe { xtag_tcp_event(c_xtcp, conn, rst_a, ip_out); }
+                break;
+            }
+        }
+    }
 }
 
 
-unsafe int main(void) {
-    chan c_xtcp[1];
+// Handle mdns TCP events
+void handle_mdns_event(chanend c_xtcp) {
+    xtcp_connection_t conn;
+    mdns_init(c_xtcp);
+    while (1) {
+        select
+        {
+            case xtcp_event(c_xtcp, conn):
+            {
+//                printstr("Event on MDNS_SERVICE, event: ");
+//                print_event_nameln(conn.event);
+                if(conn.event == XTCP_IFUP)
+                {
+                    // Register this device on the network using an mdns broadcast.
+                    mdns_register_name("etherxtag");
+                    mdns_register_canonical_name("etherxtag");
+                    mdns_register_service("etherxtag", "_xtag._tcp", ETHER_XTAG_PORT, "uuid=" DEVICE_ID);
+                    mdns_register_service("etherxtag", "_http._tcp", ETHER_XTAG_PORT, "EtherXTag Web Service");
+                }
 
-    par
-    {
-        // The main ethernet/tcp server
-        on ETHERNET_DEFAULT_TILE:// Tile 0 when in triangle slot
-            ethernet_xtcp_server(xtcp_ports, ipconfig, c_xtcp, 1);
-        on tile[1]:
-            handle_tcp_event(c_xtcp[0]);
+                mdns_xtcp_handler(c_xtcp, conn);
+                break;
+            }
+        }
     }
-    return 0;
+}
+
+// Handle http TCP events
+void handle_http_event(chanend c_xtcp) {
+    xtcp_connection_t conn;
+    httpd_init(c_xtcp);
+    while (1) {
+        select
+        {
+            case xtcp_event(c_xtcp, conn):
+            {
+                // Handle HTTP events
+//                printstr("Event on HTTP_SERVICE, event: ");
+//                print_event_nameln(conn.event);
+                unsafe { http_tcp_event(c_xtcp, conn); }
+                break;
+            }
+        }
+    }
+}
+
+//// Register an xSCOPE connection, for fast debug printing
+//void xscope_user_init(void) {
+////   xscope_register(1, XSCOPE_CONTINUOUS, "xCONNECT to target", XSCOPE_UINT, "mV");
+//   xscope_config_io(XSCOPE_IO_BASIC);
+//}
+
+void donothing(chanend c) {
+    int k;
+    while (1) {
+        c :> k;
+        printintln(k);
+    }
+}
+
+// Print out a XTCP event name (useful for debugging)
+void print_event_nameln(int event)
+{
+    switch(event)
+    {
+        case XTCP_IFUP:
+        {
+            printstr("XTCP_IFUP\n");
+            return;
+        }
+
+        case XTCP_IFDOWN:
+        {
+            printstr("XTCP_IFDOWN\n");
+            return;
+        }
+
+        case XTCP_ALREADY_HANDLED:
+        {
+            printstr("XTCP_ALREADY_HANDLED\n");
+            return;
+        }
+
+        case XTCP_NEW_CONNECTION:
+        {
+            printstr("XTCP_NEW_CONNECTION\n");
+            return;
+        }
+
+        case XTCP_SENT_DATA:
+        {
+            printstr("XTCP_SENT_DATA\n");
+            return;
+        }
+
+        case XTCP_REQUEST_DATA:
+        {
+            printstr("XTCP_REQUEST_DATA\n");
+            return;
+        }
+
+        case XTCP_RESEND_DATA:
+        {
+            printstr("XTCP_RESEND_DATA\n");
+            return;
+        }
+
+        case XTCP_RECV_DATA:
+        {
+            printstr("XTCP_RECV_DATA\n");
+            return;
+        }
+
+        case XTCP_TIMED_OUT:
+        {
+            printstr("XTCP_TIMED_OUT\n");
+            return;
+        }
+
+        case XTCP_ABORTED:
+        {
+            printstr("XTCP_ABORTED\n");
+            return;
+        }
+
+        case XTCP_CLOSED:
+        {
+            printstr("XTCP_CLOSED\n");
+            return;
+        }
+    }
 }
