@@ -1,0 +1,10 @@
+*.c linguist-language=c
+*.h linguist-language=c
+EtherXTag.h linguist-language=xc
+http_tcp.h linguist-language=xc
+web_service.h linguist-language=xc
+xscope_server.h linguist-language=xc
+xscope_udp.h linguist-language=xc
+xtag_tcp.h linguist-language=xc
+jtag_interface.h linguist-language=xc
+itoa.h linguist-language=xc
