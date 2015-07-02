@@ -1,5 +1,5 @@
-Connecting to XTAG devices over a network connection using xc_tcp
-=================================================================
+Connecting to XTAG devices over a network connection using xtcp
+===============================================================
 
 .. appnote:: AN01031
 
